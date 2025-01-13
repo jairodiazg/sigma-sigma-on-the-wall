@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "infinite aura/bin/Debug/net6.0/Program.dll",
+            "args": [],
+            "cwd": "$infinite aura",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        }
+    ]
+}

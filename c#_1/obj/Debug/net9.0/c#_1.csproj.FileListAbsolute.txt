@@ -1,0 +1,15 @@
+/Users/sa08/Desktop/infinite aura/c#_1/bin/Debug/net9.0/c#_1
+/Users/sa08/Desktop/infinite aura/c#_1/bin/Debug/net9.0/c#_1.deps.json
+/Users/sa08/Desktop/infinite aura/c#_1/bin/Debug/net9.0/c#_1.runtimeconfig.json
+/Users/sa08/Desktop/infinite aura/c#_1/bin/Debug/net9.0/c#_1.dll
+/Users/sa08/Desktop/infinite aura/c#_1/bin/Debug/net9.0/c#_1.pdb
+/Users/sa08/Desktop/infinite aura/c#_1/obj/Debug/net9.0/c#_1.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sa08/Desktop/infinite aura/c#_1/obj/Debug/net9.0/c#_1.AssemblyInfoInputs.cache
+/Users/sa08/Desktop/infinite aura/c#_1/obj/Debug/net9.0/c#_1.AssemblyInfo.cs
+/Users/sa08/Desktop/infinite aura/c#_1/obj/Debug/net9.0/c#_1.csproj.CoreCompileInputs.cache
+/Users/sa08/Desktop/infinite aura/c#_1/obj/Debug/net9.0/c#_1.sourcelink.json
+/Users/sa08/Desktop/infinite aura/c#_1/obj/Debug/net9.0/c#_1.dll
+/Users/sa08/Desktop/infinite aura/c#_1/obj/Debug/net9.0/refint/c#_1.dll
+/Users/sa08/Desktop/infinite aura/c#_1/obj/Debug/net9.0/c#_1.pdb
+/Users/sa08/Desktop/infinite aura/c#_1/obj/Debug/net9.0/c#_1.genruntimeconfig.cache
+/Users/sa08/Desktop/infinite aura/c#_1/obj/Debug/net9.0/ref/c#_1.dll

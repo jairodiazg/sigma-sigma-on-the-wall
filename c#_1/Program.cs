@@ -4,17 +4,43 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.Write("Enter the first number: ");
-        double num1 = double.Parse(Console.ReadLine());
+        NumberProcessor processor = new NumberProcessor();
+        processor.GetNumsCalcSum();
+    }
+}
 
-        Console.Write("Enter the second number: ");
-        double num2 = double.Parse(Console.ReadLine());
+class NumberProcessor
+{
+    private double[] numbers = new double[3];
 
-        Console.Write("Enter the third number: ");
-        double num3 = double.Parse(Console.ReadLine());
+    public void GetNumsCalcSum()
+    {
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            Console.Write($"Enter number {i + 1}: ");
+            numbers[i] = double.Parse(Console.ReadLine());
+        }
 
-        double sum = num1 + num2 + num3;
+        double sum = CalcSum();
+        Console.WriteLine($"The sum of the numbers is {sum}");
 
-        Console.WriteLine($"The sum of {num1}, {num2}, and {num3} is {sum}.");
+        if (sum > 50)
+        {
+            Console.WriteLine("The sum is greater than 50");
+        }
+        else
+        {
+            Console.WriteLine("The sum is 50 or less");
+        }
+    }
+
+    private double CalcSum()
+    {
+        double sum = 0;
+        foreach (double num in numbers)
+        {
+            sum += num;
+        }
+        return sum;
     }
 }

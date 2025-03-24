@@ -8,7 +8,6 @@ public class EnemyAnimation : MonoBehaviour
 
     // Animation sprite names
     public string[] idleSprites;
-    public string[] attackSprites;
     public string[] damagedSprites;
 
     private SpriteRenderer spriteRenderer;
@@ -16,8 +15,8 @@ public class EnemyAnimation : MonoBehaviour
     private float animationTimer = 0f;
     public float animationSpeed = 0.1f;
 
-    private bool isAttacking = false;
     private bool isDamaged = false;
+    private bool isIdle = true; // Track if the enemy is idle or not
 
     void Start()
     {
@@ -30,8 +29,8 @@ public class EnemyAnimation : MonoBehaviour
 
     void Update()
     {
-        // If no special animation is playing, continue idle animation
-        if (!isAttacking && !isDamaged)
+        // If the enemy is not damaged, continue with idle animation
+        if (!isDamaged)
         {
             AnimateIdle();
         }
@@ -39,57 +38,43 @@ public class EnemyAnimation : MonoBehaviour
 
     private void AnimateIdle()
     {
-        animationTimer += Time.deltaTime;
-
-        if (animationTimer >= animationSpeed)
+        // Only play idle animation if the enemy is not damaged
+        if (isIdle)
         {
-            animationTimer = 0f;
-            currentSpriteIndex = (currentSpriteIndex + 1) % idleSprites.Length;
-            spriteRenderer.sprite = atlas.GetSprite(idleSprites[currentSpriteIndex]);
+            animationTimer += Time.deltaTime;
+
+            if (animationTimer >= animationSpeed)
+            {
+                animationTimer = 0f;
+                currentSpriteIndex = (currentSpriteIndex + 1) % idleSprites.Length;
+                spriteRenderer.sprite = atlas.GetSprite(idleSprites[currentSpriteIndex]);
+            }
         }
     }
 
-    private IEnumerator PlayAttackAnimation()
-    {
-        isAttacking = true; // Mark attack animation as active
-
-        for (int i = 0; i < attackSprites.Length; i++)
-        {
-            spriteRenderer.sprite = atlas.GetSprite(attackSprites[i]);
-            yield return new WaitForSeconds(animationSpeed);
-        }
-
-        isAttacking = false; // Return to idle after attack animation
-    }
-
-    private IEnumerator PlayDamagedAnimation()
-    {
-        isDamaged = true; // Mark damaged animation as active
-
-        for (int i = 0; i < damagedSprites.Length; i++)
-        {
-            spriteRenderer.sprite = atlas.GetSprite(damagedSprites[i]);
-            yield return new WaitForSeconds(animationSpeed);
-        }
-
-        isDamaged = false; // Return to idle after damaged animation
-    }
-
-    // Public method to trigger damaged animation from outside
     public void TriggerDamagedAnimation()
     {
+        // Ensure the damaged animation plays even if the enemy is idle or moving
         if (!isDamaged)
         {
             StartCoroutine(PlayDamagedAnimation());
         }
     }
 
-    // Detect collision with the player
-    private void OnTriggerEnter2D(Collider2D collision)
+    private IEnumerator PlayDamagedAnimation()
     {
-        if (collision.CompareTag("Player")) // Ensure the player has the tag "Player"
+        isDamaged = true; // Mark damaged animation as active
+        isIdle = false; // Prevent idle animation during damage
+
+        // Play the damaged animation
+        for (int i = 0; i < damagedSprites.Length; i++)
         {
-            StartCoroutine(PlayDamagedAnimation());
+            spriteRenderer.sprite = atlas.GetSprite(damagedSprites[i]);
+            yield return new WaitForSeconds(animationSpeed);
         }
+
+        // Reset flags after the damaged animation finishes
+        isDamaged = false;
+        isIdle = true; // Allow idle animation to resume
     }
 }

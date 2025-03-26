@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AttackHitbox : MonoBehaviour
+public class PlayerAttackHitbox : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -8,7 +8,7 @@ public class AttackHitbox : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             // Get the EnemyAnimation component from the enemy
-            EnemyAnimation enemyAnim = other.GetComponent<EnemyAnimation>();
+            EnemyRobotAnimation enemyAnim = other.GetComponent<EnemyRobotAnimation>();
                 // Trigger the damaged animation
                 enemyAnim.TriggerDamagedAnimation();
         }

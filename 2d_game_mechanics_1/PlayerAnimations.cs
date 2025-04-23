@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.U2D;
 
 // This class manages the character's animations, movement, and attacks.
-public class SpriteAtlasExample : MonoBehaviour
+public class PlayerAnimations : MonoBehaviour
 {
     public SpriteAtlas atlas;
     public string[] idleSpriteNames;
